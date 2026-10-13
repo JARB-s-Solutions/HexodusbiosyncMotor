@@ -1,0 +1,6 @@
+{
+  "Endpoint": "https://<region>.codesigning.azure.net",
+  "CodeSigningAccountName": "<cuenta-de-ejemplo>",
+  "CertificateProfileName": "<perfil-de-ejemplo>",
+  "CorrelationId": "HEXODUS-BioSync-build"
+}

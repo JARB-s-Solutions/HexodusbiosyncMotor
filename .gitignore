@@ -1,0 +1,26 @@
+# Salidas de .NET e Inno Setup
+**/bin/
+**/obj/
+.build/
+artifacts/
+.tool-cache/
+*.exe
+*.pdb
+*.sha256
+
+# El SDK DigitalPersona se obtiene por separado del proveedor.
+MotorLocalExus/Engine/DPUruNet.dll
+
+# Configuración privada del motor y credenciales de firma
+*.exusconfig
+*.pfx
+*.p12
+*.snk
+*.key
+*.pem
+.env
+.env.*
+!*.example
+tools/*.json
+!tools/*.sample.json
+MotorLocalExus/Engine/appsettings.*.json

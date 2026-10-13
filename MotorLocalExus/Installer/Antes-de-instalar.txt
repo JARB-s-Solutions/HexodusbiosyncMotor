@@ -1,0 +1,14 @@
+HEXODUS BioSync - version 2.2.0
+
+Instala el motor de huellas de HEXODUS y una ventana para consultar su estado.
+
+- Requiere Windows 11 de 64 bits (Intel/AMD) y permisos de administrador unicamente para instalar, configurar o desinstalar.
+- El servicio se inicia automaticamente al encender la PC. La ventana de estado no pide elevacion y puede cerrarse sin detener el motor.
+- El lector y su controlador se instalan por separado. Buscar el lector es opcional y no bloquea la instalacion.
+- Se utiliza localhost:4000. No se abre un puerto del router ni se desactiva el antivirus.
+- La configuracion de comunicacion debe coincidir con HEXODUS. La clave del motor no es una contrasena de Supabase.
+- Se guardan localmente ajustes protegidos, logs tecnicos y eventos pendientes. No se modifica la estructura de Supabase.
+- Para registrar asistencias se necesita abrir la pantalla de asistencia e iniciar sesion con los permisos correspondientes.
+- La desinstalacion completa elimina los datos locales del motor y avisa si hay eventos pendientes. No elimina el controlador ni los registros del backend.
+
+Windows puede mostrar una advertencia de editor si el equipo no tiene instalada la firma comercial de HEXODUS. Esto no cambia el funcionamiento del motor.

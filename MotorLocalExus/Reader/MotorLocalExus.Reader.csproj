@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>MotorLocalExus.Reader</AssemblyName><Version>2.2.0</Version><Product>HEXODUS BioSync</Product>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DPUruNet"><HintPath>../Engine/DPUruNet.dll</HintPath></Reference>
+    <Compile Include="../Shared/ReaderWire.cs" Link="ReaderWire.cs" />
+  </ItemGroup>
+</Project>

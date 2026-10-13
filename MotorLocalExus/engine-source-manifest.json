@@ -1,0 +1,26 @@
+[
+    {
+        "File":  "BiometricsCache.cs",
+        "MatchesV2":  true
+    },
+    {
+        "File":  "DurableEventQueue.cs",
+        "MatchesV2":  true
+    },
+    {
+        "File":  "MotorAccess.cs",
+        "MatchesV2":  true
+    },
+    {
+        "File":  "MotorBiometrico.cs",
+        "MatchesV2":  true
+    },
+    {
+        "File":  "ProtocolModels.cs",
+        "MatchesV2":  true
+    },
+    {
+        "File":  "ProtocolSecurity.cs",
+        "MatchesV2":  true
+    }
+]
