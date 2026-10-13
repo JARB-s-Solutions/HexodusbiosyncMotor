@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework><RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><PlatformTarget>x64</PlatformTarget>
-    <AssemblyName>MotorLocalExus.Service</AssemblyName><Version>2.2.0</Version>
+    <AssemblyName>MotorLocalExus.Service</AssemblyName><Version>2.2.1</Version>
     <Product>HEXODUS BioSync</Product><Company>HEXODUS</Company>
   </PropertyGroup>
   <ItemGroup>

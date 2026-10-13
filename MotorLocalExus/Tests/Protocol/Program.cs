@@ -149,6 +149,17 @@ try {
         return ctx.Response.StatusCode;
     }
     Check(await Guard("https://gym.example", "localhost:4000", "/eventos", session) == 204, "origen autorizado y scope válido");
+    string SessionToken(string scope, int seconds) => protocol.Sign(new { v = 1, purpose = "session", kioskId = "TEST-KIOSK", scope,
+        codigoSocio = (string?)null, origin = "https://gym.example", issuedAtUtc = MotorProtocol.Utc(now),
+        expiresAtUtc = MotorProtocol.Utc(now.AddSeconds(seconds)) });
+    Check(await Guard("https://gym.example", "localhost:4000", "/eventos/stream", SessionToken("kiosk", 8 * 60 * 60)) == 204,
+        "kiosco acepta sesion de ocho horas");
+    Check(await Guard("https://gym.example", "localhost:4000", "/eventos/stream", SessionToken("kiosk", 8 * 60 * 60 + 2)) == 401,
+        "kiosco rechaza sesion mayor a ocho horas");
+    Check(await Guard("https://gym.example", "localhost:4000", "/enrolar", SessionToken("enrollment", 10 * 60)) == 204,
+        "captura conserva sesion de diez minutos");
+    Check(await Guard("https://gym.example", "localhost:4000", "/enrolar", SessionToken("enrollment", 10 * 60 + 2)) == 401,
+        "captura rechaza sesion mayor a diez minutos");
     Check(await Guard("https://evil.example", "localhost:4000", "/eventos", session) == 403, "origen ajeno bloqueado activamente");
     Check(await Guard("https://gym.example", "evil.example", "/eventos", session) == 403, "Host ajeno bloqueado");
     Check(await Guard("https://gym.example", "localhost:4000", "/enrolar", session) == 403, "scope kiosco no puede enrolar");

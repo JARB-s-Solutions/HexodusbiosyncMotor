@@ -7,7 +7,7 @@
 [Setup]
 AppId={{741F735C-96E2-4C0F-94BC-FD2A26923589}
 AppName=HEXODUS BioSync
-AppVersion=2.2.0
+AppVersion=2.2.1
 AppPublisher=HEXODUS
 DefaultDirName={autopf}\Motor Local Exus
 DefaultGroupName=HEXODUS BioSync
@@ -28,7 +28,7 @@ CloseApplications=yes
 CloseApplicationsFilter=MotorLocalExus.exe;MotorLocalExus.Reader.exe;MotorLocalExus.Service.exe
 RestartApplications=no
 SetupLogging=yes
-VersionInfoVersion=2.2.0.0
+VersionInfoVersion=2.2.1.0
 SetupIconFile=HEXODUS_BioSync.ico
 VersionInfoDescription=Instalador HEXODUS BioSync
 

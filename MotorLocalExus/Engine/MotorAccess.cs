@@ -3,6 +3,8 @@ using System.Text.Json;
 
 public static class MotorAccess {
     public const string SessionItem = "MotorSession";
+    public const int KioskSessionLifetimeSeconds = 8 * 60 * 60;
+    public const int EnrollmentSessionLifetimeSeconds = 10 * 60;
     public static async Task Guard(HttpContext context, RequestDelegate next, MotorOptions options, MotorProtocol protocol) {
         string host = context.Request.Host.Host.Trim('[', ']');
         var remote = context.Connection.RemoteIpAddress;
@@ -21,11 +23,14 @@ public static class MotorAccess {
         string token = context.Request.Headers["X-Motor-Token"].ToString();
         if (options.AllowLegacy && string.IsNullOrEmpty(token)) { await next(context); return; }
         try {
-            using var payload = protocol.Verify(token, "session", true, 600);
+            using var payload = protocol.Verify(token, "session", true, KioskSessionLifetimeSeconds);
             var session = payload.RootElement;
             string scope = MotorProtocol.Text(session, "scope");
             if (MotorProtocol.Text(session, "origin") != origin || scope is not ("kiosk" or "enrollment"))
                 throw new ProtocolException("INVALID_SCOPE", "La autorización no corresponde a este origen u operación.");
+            if (scope == "enrollment" &&
+                (MotorProtocol.ReadUtc(session, "expiresAtUtc") - MotorProtocol.ReadUtc(session, "issuedAtUtc")).TotalSeconds > EnrollmentSessionLifetimeSeconds + 1)
+                throw new ProtocolException("TOKEN_EXPIRED", "La autorización de captura excede el tiempo permitido.");
             string path = context.Request.Path.Value ?? "";
             if (path == "/enrolar" && scope != "enrollment" || path is "/eventos" or "/eventos/stream" or "/eventos/ack" or "/comparar" && scope != "kiosk") {
                 await Reject(context, 403, "INVALID_SCOPE", "La sesión no autoriza esta operación."); return;

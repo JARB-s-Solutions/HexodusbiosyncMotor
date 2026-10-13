@@ -1,6 +1,6 @@
 # HEXODUS BioSync — motor local para Windows
 
-Código fuente del motor de huellas que se instala junto a HEXODUS. La versión incluida es **2.2.0**, usa el protocolo biométrico v1 y entrega eventos al frontend mediante **SSE** en `http://localhost:4000`. Este repositorio contiene el servicio, el auxiliar del lector, la interfaz, el instalador y las pruebas. **No contiene el instalador compilado, claves reales, huellas, datos de socios ni configuraciones de una PC.**
+Código fuente del motor de huellas que se instala junto a HEXODUS. La versión incluida es **2.2.1**, usa el protocolo biométrico v1 y entrega eventos al frontend mediante **SSE** en `http://localhost:4000`. Este repositorio contiene el servicio, el auxiliar del lector, la interfaz, el instalador y las pruebas. **No contiene el instalador compilado, claves reales, huellas, datos de socios ni configuraciones de una PC.**
 
 ## Para qué sirve
 
@@ -37,6 +37,8 @@ flowchart LR
 5. El enrolamiento de socios usa una captura autorizada independiente; el acceso al lector se coordina con el detector continuo para evitar lecturas simultáneas.
 
 El motor no consulta continuamente al backend por socios: la pantalla sincroniza la caché al abrirse y al cambiar una huella. No crea socios ficticios ni modifica el esquema de la base de datos.
+
+La sesión SSE del kiosco dura hasta ocho horas. Su vencimiento requiere una nueva autorización del backend; la sesión para enrolar huellas conserva el límite de diez minutos. Instala el motor 2.2.1 antes de desplegar el backend que emite las sesiones de ocho horas, porque versiones anteriores del motor rechazan su duración.
 
 ## Compilar el instalador desde una copia nueva
 

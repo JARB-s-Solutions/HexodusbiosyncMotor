@@ -67,7 +67,7 @@ public sealed class SiteConfiguration {
 }
 
 public sealed class StatusSnapshot {
-    public string Version { get; set; } = "2.2.0";
+    public string Version { get; set; } = "2.2.1";
     public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset StartedAt { get; set; }
     public bool Configured { get; set; }

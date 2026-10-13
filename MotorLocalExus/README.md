@@ -1,4 +1,4 @@
-# HEXODUS BioSync 2.2.0 - Windows 11 x64
+# HEXODUS BioSync 2.2.1 - Windows 11 x64
 
 Este directorio contiene los proyectos del motor local de HEXODUS. La guía de arquitectura, compilación, configuración e instalación está en [`../README.md`](../README.md).
 
