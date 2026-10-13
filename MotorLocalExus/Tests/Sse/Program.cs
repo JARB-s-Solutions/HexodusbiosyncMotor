@@ -43,6 +43,9 @@ try {
     using (var denied = await Open(null)) Check(denied.StatusCode == HttpStatusCode.Unauthorized, "stream sin token rechazado");
     using (var denied = await Open(Token("enrollment"))) Check(denied.StatusCode == HttpStatusCode.Forbidden, "scope de captura no permite SSE");
     using (var denied = await Open(Token(), "https://invalid.example")) Check(denied.StatusCode == HttpStatusCode.Forbidden, "origen ajeno rechazado");
+    using (var response = await Open(Token(seconds: 8 * 60 * 60))) {
+        Check(response.Content.Headers.ContentType?.MediaType == "text/event-stream", "stream de ocho horas autorizado");
+    }
     string firstId;
     using (var response = await Open(Token())) {
         Check(response.Content.Headers.ContentType?.MediaType == "text/event-stream", "tipo SSE");

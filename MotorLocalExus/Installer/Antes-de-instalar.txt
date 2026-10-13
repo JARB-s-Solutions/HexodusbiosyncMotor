@@ -1,4 +1,4 @@
-HEXODUS BioSync - version 2.2.0
+HEXODUS BioSync - version 2.2.1
 
 Instala el motor de huellas de HEXODUS y una ventana para consultar su estado.
 
